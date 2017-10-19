@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Tour</title>
+    <link rel="stylesheet" href="pannellum/pannellum.css"/>
+    <script type="text/javascript" src="pannellum/pannellum.js"></script>
+    <style>
+    #panorama {
+        width: 98vw;
+        height: 98vh;
+    }
+    </style>
+</head>
+<body>
+
+<div id="panorama"></div>
+<script>
+pannellum.viewer('panorama', {
+    "default": {
+        "firstScene": "corridor-1",
+        "author": "Laser Analytics Group",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true
+    },
+
+    "scenes": {
+        "corridor-1": {
+            "title": "Entrance",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "multires",
+            "multiRes": {
+              "basePath": "images/corridor-1",
+              "path": "/%l/%s%y_%x",
+              "fallbackPath": "/fallback/%s",
+              "extension": "jpg",
+              "titleResolution": 512,
+              "maxLevel": 6,
+              "cubeResolution": 8432
+            },
+            "hotSpots": [
+                {
+                    "pitch": -20,
+                    "yaw": 90,
+                    "type": "scene",
+                    "text": "Corridor (SIM)",
+                    "sceneId": "corridor-2",
+                    "targetYaw": 90,
+                    "targetPitch": 0
+                }
+            ]
+        },
+
+        "corridor-2": {
+            "title": "Corridor (SIM)",
+            "hfov": 110,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -20,
+                    "yaw": -90,
+                    "type": "scene",
+                    "text": "Entrance",
+                    "sceneId": "corridor-1",
+                    "targetYaw": -90,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -20,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-1",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+
+        "sim-1": {
+            "title": "SIM",
+            "hfov": 110,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sim-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -20,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "Corridor (SIM)",
+                    "sceneId": "corridor-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -20,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-2",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+
+        "sim-2": {
+            "title": "SIM",
+            "hfov": 110,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sim-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -20,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -20,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-3",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+
+        "sim-3": {
+            "title": "SIM",
+            "hfov": 110,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sim-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -20,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+            ]
+        }
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1609 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Tour</title>
+    <link rel="stylesheet" href="pannellum/pannellum.css"/>
+    <script type="text/javascript" src="pannellum/pannellum.js"></script>
+    <style>
+    html{
+      overflow:hidden;
+    }
+    #panorama {
+        width: 100vw;
+        height: 100vh;
+    }
+    .cupboard-hotspot {
+      height: 22px;
+      width: 22px;
+      background-image: url("openCupboard.png");
+      background-size:100%;
+    }
+
+    div.custom-tooltip span {
+        visibility: hidden;
+        position: absolute;
+        border-radius: 3px;
+        background-color: #fff;
+        color: #000;
+        text-align: center;
+        max-width: 200px;
+        padding: 5px 10px;
+        margin-left: -220px;
+        cursor: default;
+    }
+    div.custom-tooltip:hover span{
+        visibility: visible;
+    }
+    div.custom-tooltip:hover span:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #fff transparent transparent transparent;
+        bottom: -20px;
+        left: -10px;
+        margin: 0 50%;
+    }
+    </style>
+
+    </style>
+</head>
+<body>
+
+<div id="panorama"></div>
+<script>
+pannellum.viewer('panorama', {
+    "default": {
+        "firstScene": "corridor-2-open",
+        "author": "Laser Analytics Group",
+        "sceneFadeDuration": 1000,
+        "autoLoad": true,
+        //"hotSpotDebug": true
+    },
+
+    "scenes": {
+        "outside": {
+            "title": "Entrance hall",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/outside.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -36,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "Entrance",
+                    "sceneId": "entrance",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": 7.3,
+                    "yaw": -67.7,
+                    "type": "info",
+                    "text": "Go in!"
+                },
+                {
+                    "pitch": -4,
+                    "yaw": 192.8,
+                    "type": "info",
+                    "text": "MNG Lab"
+                },
+                {
+                    "pitch": -10,
+                    "yaw": 38.4,
+                    "type": "info",
+                    "text": "Entrance keypad"
+                },
+                {
+                    "pitch": 2.7,
+                    "yaw": 37.6,
+                    "type": "info",
+                    "text": "Interlock information: Red = laser on!, Green = lasers off"
+                }
+            ]
+        },
+        "entrance": {
+            "title": "Entrance",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/entrance.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -31.4,
+                    "yaw": 188,
+                    "type": "scene",
+                    "text": "Entrance hall",
+                    "sceneId": "outside",
+                    "targetYaw": 188,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": -8.5,
+                    "type": "scene",
+                    "text": "Corridor (TG-FLIM)",
+                    "sceneId": "corridor-1",
+                    "targetYaw": -8.5,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -39,
+                    "yaw": 44.8,
+                    "type": "scene",
+                    "text": "Corridor (SIM)",
+                    "sceneId": "corridor-2",
+                    "targetYaw": 44.8,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -5.6,
+                    "yaw": 180,
+                    "type": "info",
+                    "text": "MNG Lab"
+                },
+                {
+                    "pitch": -43.4,
+                    "yaw": 69.5,
+                    "type": "info",
+                    "text": "General waste bin"
+                }
+            ]
+        },
+        "corridor-1": {
+            "title": "Corridor (TCSPC)",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -31.4,
+                    "yaw": 188,
+                    "type": "scene",
+                    "text": "Entrance",
+                    "sceneId": "entrance",
+                    "targetYaw": 188,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": -8.5,
+                    "type": "scene",
+                    "text": "TG-FLIM",
+                    "sceneId": "tgflim-1",
+                    "targetYaw": -8.5,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -33.3,
+                    "yaw": -84.9,
+                    "type": "scene",
+                    "text": "Corridor (SPIM)",
+                    "sceneId": "corridor-5",
+                    "targetYaw": -84.9,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 91.6,
+                    "type": "scene",
+                    "text": "Corridor (SIM)",
+                    "sceneId": "corridor-2",
+                    "targetYaw": 91.6,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -2.7,
+                    "yaw": -122.2,
+                    "type": "info",
+                    "text": "Interlock"
+                },
+                {
+                    "pitch": 5.5,
+                    "yaw": -100,
+                    "type": "info",
+                    "text": '"Danger: laser on!"'
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-1-open",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-1-open",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-1-open": {
+            "title": "Corridor (TCSPC) - Curtains Open",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-1a.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -39.3,
+                    "yaw": 88.2,
+                    "type": "scene",
+                    "text": "Corridor (SIM)",
+                    "sceneId": "corridor-2-open",
+                    "targetYaw": 88.2,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": -83.1,
+                    "type": "scene",
+                    "text": "Corridor (SPIM)",
+                    "sceneId": "corridor-5-open",
+                    "targetYaw": -83.1,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-1",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-1",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-2-open": {
+            "title": "Corridor (SIM) - Curtains Open",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-2a.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -39.3,
+                    "yaw": 88.2,
+                    "type": "scene",
+                    "text": "Corridor (TCSPC)",
+                    "sceneId": "corridor-3-open",
+                    "targetYaw": 88.2,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": -83.1,
+                    "type": "scene",
+                    "text": "Corridor (TG-FLIM)",
+                    "sceneId": "corridor-1-open",
+                    "targetYaw": -83.1,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-2",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-2",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-3-open": {
+            "title": "Corridor (TCSPC) - Curtains Open",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-3a.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -39.3,
+                    "yaw": 88.2,
+                    "type": "scene",
+                    "text": "Storage Room",
+                    "sceneId": "storage-room",
+                    "targetYaw": 88.2,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": -83.1,
+                    "type": "scene",
+                    "text": "Corridor (SIM)",
+                    "sceneId": "corridor-2-open",
+                    "targetYaw": -83.1,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-3",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-3",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-5-open": {
+            "title": "Corridor (SPIM) - Curtains Open",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-5a.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -39.3,
+                    "yaw": 88.2,
+                    "type": "scene",
+                    "text": "Corridor (TCSPC)",
+                    "sceneId": "corridor-1-open",
+                    "targetYaw": 88.2,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": -83.1,
+                    "type": "scene",
+                    "text": "Corridor (STORM)",
+                    "sceneId": "corridor-6-open",
+                    "targetYaw": -83.1,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-5",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-5",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-6-open": {
+            "title": "Corridor (STORM) - Curtains Open",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-6a.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -39.3,
+                    "yaw": 88.2,
+                    "type": "scene",
+                    "text": "Corridor (SPIM)",
+                    "sceneId": "corridor-5-open",
+                    "targetYaw": 88.2,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": -83.1,
+                    "type": "scene",
+                    "text": "Corridor (STED)",
+                    "sceneId": "corridor-7-open",
+                    "targetYaw": -83.1,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-6",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-6",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-7-open": {
+            "title": "Corridor (STED) - Curtains Open",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-7a.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -39.3,
+                    "yaw": 88.2,
+                    "type": "scene",
+                    "text": "Corridor (STORM)",
+                    "sceneId": "corridor-6-open",
+                    "targetYaw": 88.2,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": -83.1,
+                    "type": "scene",
+                    "text": "Corridor (STORM 2)",
+                    "sceneId": "corridor-8-open",
+                    "targetYaw": -83.1,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-7",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-7",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-8-open": {
+            "title": "Corridor (STED) - Curtains Open",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-8a.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -39.3,
+                    "yaw": 88.2,
+                    "type": "scene",
+                    "text": "Corridor (STORM 2)",
+                    "sceneId": "corridor-7-open",
+                    "targetYaw": 88.2,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-8",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Close curtains",
+                    "sceneId": "corridor-8",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-2": {
+            "title": "Corridor (SIM)",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -8.5,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-1",
+                    "targetYaw": -8.5,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -33.3,
+                    "yaw": -84.9,
+                    "type": "scene",
+                    "text": "Corridor (TG-FLIM)",
+                    "sceneId": "corridor-1",
+                    "targetYaw": -84.9,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 91.6,
+                    "type": "scene",
+                    "text": "Corridor (TCSPC)",
+                    "sceneId": "corridor-3",
+                    "targetYaw": 91.6,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-2-open",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-2-open",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-3": {
+            "title": "Corridor (TCSPC)",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -33.3,
+                    "yaw": -84.9,
+                    "type": "scene",
+                    "text": "Corridor (SIM)",
+                    "sceneId": "corridor-2",
+                    "targetYaw": -84.9,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 91.6,
+                    "type": "scene",
+                    "text": "Corridor (TCSPC)",
+                    "sceneId": "corridor-4",
+                    "targetYaw": 91.6,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-3-open",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-3-open",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-4": {
+            "title": "Corridor (TCSPC)",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-4.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -8.5,
+                    "type": "scene",
+                    "text": "TCSPC",
+                    "sceneId": "tcspc-1",
+                    "targetYaw": -8.5,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -33.3,
+                    "yaw": -84.9,
+                    "type": "scene",
+                    "text": "Corridor (TCSPC)",
+                    "sceneId": "corridor-3",
+                    "targetYaw": -84.9,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 91.6,
+                    "type": "scene",
+                    "text": "Storage Room",
+                    "sceneId": "storage-room",
+                    "targetYaw": 91.6,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-3-open",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-5": {
+            "title": "Corridor (SPIM)",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-5.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -8.5,
+                    "type": "scene",
+                    "text": "SPIM",
+                    "sceneId": "spim-1",
+                    "targetYaw": -8.5,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -33.3,
+                    "yaw": -84.9,
+                    "type": "scene",
+                    "text": "Corridor (STED)",
+                    "sceneId": "corridor-6",
+                    "targetYaw": -84.9,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 91.6,
+                    "type": "scene",
+                    "text": "Corridor (TG-FLIM)",
+                    "sceneId": "corridor-1",
+                    "targetYaw": 91.6,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-5-open",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-5-open",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-6": {
+            "title": "Corridor (STORM)",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-6.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -8.5,
+                    "type": "scene",
+                    "text": "STORM",
+                    "sceneId": "storm-1",
+                    "targetYaw": -8.5,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -33.3,
+                    "yaw": -84.9,
+                    "type": "scene",
+                    "text": "Corridor (STED)",
+                    "sceneId": "corridor-7",
+                    "targetYaw": -84.9,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 91.6,
+                    "type": "scene",
+                    "text": "Corridor (SPIM)",
+                    "sceneId": "corridor-5",
+                    "targetYaw": 91.6,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-6-open",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-6-open",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-7": {
+            "title": "Corridor (STED)",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-7.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -8.5,
+                    "type": "scene",
+                    "text": "STED",
+                    "sceneId": "sted-1",
+                    "targetYaw": -8.5,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -33.3,
+                    "yaw": -84.9,
+                    "type": "scene",
+                    "text": "Corridor (STORM 2)",
+                    "sceneId": "corridor-8",
+                    "targetYaw": -84.9,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 91.6,
+                    "type": "scene",
+                    "text": "Corridor (STORM)",
+                    "sceneId": "corridor-6",
+                    "targetYaw": 91.6,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-7-open",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-7-open",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "corridor-8": {
+            "title": "Corridor (STORM 2)",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/corridor-8.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -8.5,
+                    "type": "scene",
+                    "text": "STORM 2",
+                    "sceneId": "new-storm-1",
+                    "targetYaw": -8.5,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -40,
+                    "yaw": 91.6,
+                    "type": "scene",
+                    "text": "Corridor (STED)",
+                    "sceneId": "corridor-7",
+                    "targetYaw": 91.6,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -8.5,
+                    "yaw": 38,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-8-open",
+                    "targetYaw": 38,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -9.1,
+                    "yaw": -44.8,
+                    "cssClass": "cupboard-hotspot",
+                    "createTooltipFunc": hotspot,
+                    "createTooltipArgs": "Open curtains",
+                    "sceneId": "corridor-8-open",
+                    "targetYaw": -44.8,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "storage-room": {
+            "title": "Storage Room",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/storage-room.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -90,
+                    "type": "scene",
+                    "text": "Corridor (TCSPC)",
+                    "sceneId": "corridor-4",
+                    "targetYaw": -90,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "tcspc-1": {
+            "title": "TCSPC",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/tcspc-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "Corridor (TCSPC)",
+                    "sceneId": "corridor-4",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "TCSPC",
+                    "sceneId": "tcspc-2",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "tcspc-2": {
+            "title": "TCSPC",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/tcspc-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "TCSPC",
+                    "sceneId": "tcspc-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "TCSPC",
+                    "sceneId": "tcspc-3",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "tcspc-3": {
+            "title": "TCSPC",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/tcspc-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "TCSPC",
+                    "sceneId": "tcspc-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+            ]
+        },
+        "sim-1": {
+            "title": "SIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sim-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "Corridor (SIM)",
+                    "sceneId": "corridor-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-2",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "sim-2": {
+            "title": "SIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sim-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-3",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "sim-3": {
+            "title": "SIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sim-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": -90,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-4",
+                    "targetYaw": -90,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "sim-4": {
+            "title": "SIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sim-4.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": 90,
+                    "type": "scene",
+                    "text": "SIM",
+                    "sceneId": "sim-3",
+                    "targetYaw": 90,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "tgflim-1": {
+            "title": "TG-FLIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/tgflim-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "Corridor (TG-FLIM)",
+                    "sceneId": "corridor-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "TG-FLIM",
+                    "sceneId": "tgflim-2",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "tgflim-2": {
+            "title": "TG-FLIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/tgflim-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "TG-FLIM",
+                    "sceneId": "tgflim-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "TG-FLIM",
+                    "sceneId": "tgflim-3",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "tgflim-3": {
+            "title": "TG-FLIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/tgflim-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "TG-FLIM",
+                    "sceneId": "tgflim-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": -90,
+                    "type": "scene",
+                    "text": "TG-FLIM",
+                    "sceneId": "tgflim-4",
+                    "targetYaw": -90,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "tgflim-4": {
+            "title": "TG-FLIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/tgflim-4.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": 90,
+                    "type": "scene",
+                    "text": "TG-FLIM",
+                    "sceneId": "tgflim-3",
+                    "targetYaw": 90,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "spim-1": {
+            "title": "SPIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/spim-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "Corridor (SPIM)",
+                    "sceneId": "corridor-5",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "SPIM",
+                    "sceneId": "spim-2",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "spim-2": {
+            "title": "SPIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/spim-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "SPIM",
+                    "sceneId": "spim-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "SPIM",
+                    "sceneId": "spim-3",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "spim-3": {
+            "title": "SPIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/spim-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "SPIM",
+                    "sceneId": "spim-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": -90,
+                    "type": "scene",
+                    "text": "SPIM",
+                    "sceneId": "spim-4",
+                    "targetYaw": -90,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "spim-4": {
+            "title": "SPIM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/spim-4.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": 90,
+                    "type": "scene",
+                    "text": "SPIM",
+                    "sceneId": "spim-3",
+                    "targetYaw": 90,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "storm-1": {
+            "title": "STORM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/storm-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "Corridor (STORM)",
+                    "sceneId": "corridor-6",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "STORM",
+                    "sceneId": "storm-2",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "storm-2": {
+            "title": "STORM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/storm-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "STORM",
+                    "sceneId": "storm-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "STORM",
+                    "sceneId": "storm-3",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "storm-3": {
+            "title": "STORM",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/storm-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "STORM",
+                    "sceneId": "storm-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "sted-1": {
+            "title": "STED",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sted-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "Corridor (STED)",
+                    "sceneId": "corridor-7",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "STED",
+                    "sceneId": "sted-2",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "sted-2": {
+            "title": "STED",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sted-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "STED",
+                    "sceneId": "sted-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "STED",
+                    "sceneId": "sted-3",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "sted-3": {
+            "title": "STED",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/sted-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "STED",
+                    "sceneId": "sted-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "new-storm-1-1": {
+            "title": "STORM 2",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/new-storm-1.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "Corridor (STORM 2)",
+                    "sceneId": "corridor-8",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "STORM 2",
+                    "sceneId": "new-storm-2",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "new-storm-2": {
+            "title": "STORM 2",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/new-storm-2.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "STORM 2",
+                    "sceneId": "new-storm-1",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "STORM 2",
+                    "sceneId": "new-storm-3",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "new-storm-3": {
+            "title": "STORM 2",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/new-storm-3.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "STORM 2",
+                    "sceneId": "new-storm-2",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                },
+                {
+                    "pitch": -44.7,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "STORM 2",
+                    "sceneId": "new-storm-4",
+                    "targetYaw": 0,
+                    "targetPitch": 0
+                }
+            ]
+        },
+        "new-storm-4": {
+            "title": "STORM 2",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 0,
+            "type": "equirectangular",
+            "panorama": "images/new-storm-4.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -44.7,
+                    "yaw": -180,
+                    "type": "scene",
+                    "text": "STORM 2",
+                    "sceneId": "new-storm-3",
+                    "targetYaw": -180,
+                    "targetPitch": 0
+                }
+            ]
+        },
+    }
+});
+
+function hotspot(hotSpotDiv, args) {
+    hotSpotDiv.classList.add('custom-tooltip');
+    var span = document.createElement('span');
+    span.innerHTML = args;
+    hotSpotDiv.appendChild(span);
+    span.style.width = span.scrollWidth - 10 + 'px';
+    span.style.marginLeft = -(span.scrollWidth - hotSpotDiv.offsetWidth) / 2 + 'px';
+    span.style.marginTop = -span.scrollHeight - 12 + 'px';
+}
+</script>
+
+
+</body>
+</html>
